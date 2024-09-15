@@ -1,0 +1,21 @@
+  /* Tailwind base, components, and utilities */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  
+
+
+/* src/index.css */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  canvas {
+    background-color: #000;
+  }
+  
+  section {
+    background-size: cover;
+    background-position: center;
+  }
+  

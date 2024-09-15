@@ -1,0 +1,20 @@
+/* src/styles/parallax.css */
+
+.parallax {
+    background-image: url('path/to/your/image.jpg');
+    height: 500px; /* Adjust based on your needs */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .parallax-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+  
