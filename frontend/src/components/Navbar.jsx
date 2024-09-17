@@ -1,5 +1,3 @@
-// src/components/Navbar.jsx
-
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSearch, FaUser, FaMoon, FaSun } from "react-icons/fa";
 import logo from "../assets/logo.svg";
@@ -16,7 +14,7 @@ const Navbar = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle("dark"); // This toggles the dark mode class on <html>
   };
 
   // Smooth Scroll Logic
@@ -62,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed w-full top-4 z-20 bg-opacity-30 bg-white backdrop-blur-md shadow-lg rounded-[36px] p-4 transition-all duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+    <nav className={`fixed w-full top-4 z-20 backdrop-blur-md shadow-lg rounded-[36px] p-4 transition-all duration-300 bg-opacity-30 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-4">
@@ -100,7 +98,8 @@ const Navbar = () => {
             <FaSearch size={20} className="cursor-pointer hover:text-yellow-300 transition duration-300" onClick={handleSearch} />
           </form>
 
-          <FaUser size={20} className="cursor-pointer hover:text-yellow-300 transition duration-300" />
+          {/* Login Icon */}
+          <FaUser size={20} className="cursor-pointer hover:text-yellow-300 transition duration-300" onClick={() => window.location.href = '/login'} />
           {/* Dark Mode Toggle */}
           <div onClick={toggleDarkMode} className="cursor-pointer">
             {darkMode ? <FaSun size={20} className="text-yellow-300" /> : <FaMoon size={20} className="text-yellow-300" />}
@@ -114,17 +113,16 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <ul
         className={`md:hidden absolute top-16 left-0 w-full bg-white bg-opacity-90 backdrop-blur-lg space-y-4 py-4 transition-transform ${
-          navOpen ? "transform translate-y-0" : "transform -translate-y-full"
+          navOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         {["home", "trainers", "activities", "contact"].map((section) => (
-          <li
-            key={section}
-            className={`text-left text-lg font-medium ${
-              activeSection === section ? "text-yellow-300" : ""
-            }`}
-          >
-            <a href={`#${section}`} onClick={(e) => handleSmoothScroll(e, section)}>
+          <li key={section} className="text-center">
+            <a
+              href={`#${section}`}
+              onClick={(e) => handleSmoothScroll(e, section)}
+              className="text-lg font-medium text-black hover:text-yellow-300 transition duration-300"
+            >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </a>
           </li>

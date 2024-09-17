@@ -1,89 +1,90 @@
-/* src/App.css */
+/* Base Styles */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Saira Stencil One', cursive;
+  background-color: #f7f7f7;
+}
+
+/* Section Styles */
+.home-section, .trainers-section, .activities-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.home-section {
+  background: linear-gradient(135deg, #ff6b6b, #f5f7fa);
+}
+
+.trainers-section {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+}
+
+.activities-section {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Text Styles */
+.main-heading {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.sub-heading {
+  font-size: 1.5rem;
+  color: #eee;
+}
+
+/* Animations */
 @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slide-up {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 2s ease-in-out;
-  }
-  
-  .animate-slide-up {
-    animation: slide-up 1.5s ease-in-out;
-  }
-  
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
-  }
-  
-
-  /* src/styles.css */
-
-/* Section FadeIn Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-@keyframes fadeInUp {
-  from {
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
     opacity: 0;
-    transform: translateY(30px);
   }
-  to {
-    opacity: 1;
+  100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.fadeIn {
-  animation: fadeIn 1s ease-out;
+.animate-fade-in {
+  animation: fade-in 2s ease-in-out;
 }
 
-.fadeInUp {
-  animation: fadeInUp 1s ease-out;
+.animate-slide-up {
+  animation: slide-up 1.5s ease-in-out;
 }
 
-/* Dark Mode */
-:root {
-  --bg-dark: #1a1a1a;
-  --text-dark: #ffffff;
+/* Parallax Section */
+.parallax-section h2 {
+  color: #fff;
 }
 
-.dark {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+/* Scroll to Top Button */
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #ffc107;
+  color: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
 }
 
+button:hover {
+  background-color: #ffca28;
+}

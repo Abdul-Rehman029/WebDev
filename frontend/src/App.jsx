@@ -1,10 +1,52 @@
-// src/App.jsx
-
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ParallaxSection from "./components/ParallaxSection";
 import { FaArrowUp } from "react-icons/fa";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ParallaxSection from "./components/ParallaxSection"; // Parallax section component
+import Login from "./pages/Login"; // Login page
+import Navbar from "./components/Navbar"; // Navbar component
+
+// Simple text section component
+const TextSection = ({ heading, description, bgColor }) => (
+  <section id={heading.toLowerCase()} className={`min-h-screen flex flex-col justify-center items-center ${bgColor}`}>
+    <div className="text-center max-w-3xl p-6">
+      <h2 className="text-5xl font-bold mb-6">{heading}</h2>
+      <p className="text-xl text-gray-200">{description}</p>
+    </div>
+  </section>
+);
+
+// Sections like Home, Trainers, and Activities
+const Home = () => (
+  <TextSection
+    heading="Home"
+    description="Welcome to Our Website. Discover the amazing world of learning with our expert trainers and engaging activities."
+    bgColor="bg-gray-900 text-white"
+  />
+);
+
+const Trainers = () => (
+  <TextSection
+    heading="Trainers"
+    description="Meet Our Trainers: Industry experts with years of experience in their respective fields, ready to guide you through your learning journey."
+    bgColor="bg-gray-800 text-white"
+  />
+);
+
+const Activities = () => (
+  <TextSection
+    heading="Activities"
+    description="Explore Our Activities: Engage in various activities that boost your knowledge and skills. From hands-on projects to live demonstrations, there's something for everyone."
+    bgColor="bg-gray-700 text-white"
+  />
+);
+
+const Contact = () => (
+  <TextSection
+    heading="Contact"
+    description="Get in Touch: Have any questions or inquiries? Feel free to contact us."
+    bgColor="bg-gray-600 text-white"
+  />
+);
 
 const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -29,65 +71,63 @@ const App = () => {
   };
 
   return (
-    <div className="relative">
-      <Navbar />
+    <Router>
+      <div className="relative">
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-4 right-4 p-3 bg-yellow-300 rounded-full text-black shadow-lg"
-        >
-          <FaArrowUp size={20} />
-        </button>
-      )}
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-4 right-4 p-3 bg-yellow-300 rounded-full text-black shadow-lg"
+          >
+            <FaArrowUp size={20} />
+          </button>
+        )}
 
-      {/* Home Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center text-white bg-gray-900 fadeIn">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-6xl font-bold mb-4">Welcome to Our Website</h1>
-          <p className="text-xl">An interactive one-page scrolling experience.</p>
-        </div>
-      </section>
+        {/* Routes without layouts */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {/* Home Section */}
+                <Home />
 
-      {/* Parallax Section */}
-      <ParallaxSection imageUrl="https://source.unsplash.com/1600x900/?nature,water">
-        <h2 className="text-5xl font-bold fadeInUp">Experience the Beauty of Nature</h2>
-        <p className="text-2xl mt-4">A breathtaking view for a stunning experience.</p>
-      </ParallaxSection>
+                {/* Parallax Section 1 */}
+                <ParallaxSection imageUrl="https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg">
+                  <h2 className="text-5xl font-bold fadeInUp text-white">
+                    Experience the Beauty of Nature
+                  </h2>
+                  <p className="text-2xl mt-4 text-white">A breathtaking view for a stunning experience.</p>
+                </ParallaxSection>
 
-      {/* Trainers Section */}
-      <section id="trainers" className="min-h-screen flex items-center justify-center text-white bg-gray-800 fadeIn">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-6xl font-bold mb-4">Meet the Trainers</h1>
-          <p className="text-xl">Our experienced trainers are here to help you grow.</p>
-        </div>
-      </section>
+                {/* Trainers Section */}
+                <Trainers />
 
-      {/* Parallax Section */}
-      <ParallaxSection imageUrl="https://source.unsplash.com/1600x900/?mountains">
-        <h2 className="text-5xl font-bold fadeInUp">Reach New Heights</h2>
-        <p className="text-2xl mt-4">Pushing your limits and reaching new heights.</p>
-      </ParallaxSection>
+                {/* Parallax Section 2 */}
+                <ParallaxSection imageUrl="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg">
+                  <h2 className="text-5xl font-bold fadeInUp text-white">
+                    Reach New Heights
+                  </h2>
+                  <p className="text-2xl mt-4 text-white">Pushing your limits and reaching new heights.</p>
+                </ParallaxSection>
 
-      {/* Activities Section */}
-      <section id="activities" className="min-h-screen flex items-center justify-center text-white bg-gray-700 fadeIn">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-6xl font-bold mb-4">Our Activities</h1>
-          <p className="text-xl">Join our activities and start your journey with us.</p>
-        </div>
-      </section>
+                {/* Activities Section */}
+                <Activities />
 
-      {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center text-white bg-gray-600 fadeIn">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-6xl font-bold mb-4">Get in Touch</h1>
-          <p className="text-xl">We'd love to hear from you! Contact us for more information.</p>
-        </div>
-      </section>
+                {/* Contact Section */}
+                <Contact />
+              </>
+            }
+          />
 
-      <Footer />
-    </div>
+          {/* Login page */}
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
